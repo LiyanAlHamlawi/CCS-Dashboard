@@ -293,6 +293,101 @@
   @media (max-width: 650px) {
     .grid-2, .grid-3, .grid-5 { grid-template-columns: 1fr; }
   }
+
+  /* ── Ask CCS Chatbot ── */
+  #askccs { padding: 0; display: none; flex-direction: column; height: calc(100vh - 112px); overflow: hidden; }
+  #askccs.active { display: flex; }
+  .ccs-chat-wrap { display: flex; flex: 1; overflow: hidden; }
+  .ccs-sidebar { width: 240px; background: #fff; border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; }
+  .ccs-sidebar-hdr { padding: 12px 14px; border-bottom: 1px solid var(--border); background: #f8f9fa; }
+  .ccs-sidebar-hdr h3 { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .6px; margin: 0 0 2px; }
+  #ccs-idx-status { font-size: 11px; color: var(--text-sub); }
+  .ccs-sidebar-scroll { flex: 1; overflow-y: auto; padding: 6px 0; }
+  .ccs-sidebar-scroll::-webkit-scrollbar { width: 3px; }
+  .ccs-sidebar-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .ccs-cat-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-sub); padding: 7px 14px 3px; display: flex; justify-content: space-between; align-items: center; }
+  .ccs-cat-count { background: var(--accent); color: #fff; border-radius: 8px; padding: 1px 5px; font-size: 10px; }
+  .ccs-doc-item { padding: 4px 14px; font-size: 11px; color: var(--text); cursor: default; display: flex; align-items: flex-start; gap: 5px; line-height: 1.3; }
+  .ccs-doc-item.hit { background: #f3edf9; color: var(--accent); font-weight: 600; }
+  .ccs-chat-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f8f9fa; }
+  .ccs-setup { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .ccs-setup-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; max-width: 480px; width: 100%; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+  .ccs-setup-card h2 { font-size: 18px; color: var(--accent); margin: 0 0 6px; }
+  .ccs-setup-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin: 0 0 16px; }
+  .ccs-steps { background: #f8f9fa; border: 1px solid var(--border); border-radius: 7px; padding: 14px 16px; margin-bottom: 18px; }
+  .ccs-steps h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-sub); margin: 0 0 8px; }
+  .ccs-step { display: flex; gap: 8px; margin-bottom: 6px; font-size: 13px; line-height: 1.4; }
+  .ccs-step-n { background: var(--accent); color: #fff; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+  .ccs-step code { background: #eee; padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 11px; color: var(--accent); }
+  .ccs-fgroup { margin-bottom: 12px; }
+  .ccs-fgroup label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .ccs-fgroup input { width: 100%; padding: 9px 11px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 13px; outline: none; }
+  .ccs-fgroup input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(75,40,109,.1); }
+  .ccs-btn-primary { width: 100%; padding: 9px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .ccs-btn-primary:hover { background: #3a1e55; }
+  .ccs-btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+  .ccs-setup-err { background: #fdecea; color: #c62828; border: 1px solid #f5c6cb; border-radius: 5px; padding: 8px 12px; font-size: 12px; margin-top: 10px; display: none; }
+  .ccs-panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .ccs-api-bar { padding: 5px 14px; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-sub); }
+  .ccs-api-key-disp { font-family: monospace; background: #f3f3f3; border: 1px solid var(--border); border-radius: 3px; padding: 1px 7px; font-size: 11px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ccs-btn-link { background: none; border: none; color: var(--accent); font-size: 11px; cursor: pointer; text-decoration: underline; padding: 0; }
+  .ccs-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .ccs-messages::-webkit-scrollbar { width: 5px; }
+  .ccs-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .ccs-msg { display: flex; gap: 8px; max-width: 88%; animation: ccsSlide .18s ease; }
+  @keyframes ccsSlide { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+  .ccs-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .ccs-msg.assistant { align-self: flex-start; }
+  .ccs-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .ccs-msg.user .ccs-avatar { background: var(--accent); color: #fff; }
+  .ccs-msg.assistant .ccs-avatar { background: #66CC00; color: #3a1e55; font-size: 14px; }
+  .ccs-bubble { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.6; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .ccs-msg.user .ccs-bubble { background: var(--accent); color: #fff; border-color: transparent; }
+  .ccs-bubble h1,.ccs-bubble h2,.ccs-bubble h3 { margin: 10px 0 5px; color: var(--accent); font-size: 13px; }
+  .ccs-bubble ul,.ccs-bubble ol { margin: 6px 0 6px 18px; }
+  .ccs-bubble li { margin-bottom: 3px; }
+  .ccs-bubble code { background: #f3f3f3; padding: 1px 4px; border-radius: 3px; font-family: monospace; font-size: 11px; color: var(--accent); }
+  .ccs-bubble strong { color: #3a1e55; }
+  .ccs-msg.user .ccs-bubble strong { color: #c3f27b; }
+  .ccs-bubble p { margin-bottom: 6px; }
+  .ccs-bubble p:last-child { margin-bottom: 0; }
+  .ccs-bubble table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 11px; }
+  .ccs-bubble th { background: #f3f3f3; color: var(--accent); font-weight: 700; padding: 5px 8px; text-align: left; border: 1px solid var(--border); }
+  .ccs-bubble td { padding: 4px 8px; border: 1px solid var(--border); }
+  .ccs-bubble tr:nth-child(even) td { background: #f8f9fa; }
+  .ccs-citations { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11px; }
+  .ccs-cit-label { font-weight: 700; color: var(--accent); margin-bottom: 3px; font-size: 10px; text-transform: uppercase; letter-spacing: .4px; }
+  .ccs-cit-tag { display: inline-flex; align-items: center; gap: 3px; background: #f3edf9; border: 1px solid #d4bde8; color: var(--accent); border-radius: 3px; padding: 1px 6px; margin: 2px 2px 2px 0; font-size: 10px; font-weight: 600; }
+  .ccs-typing { display: flex; gap: 3px; padding: 2px 0; }
+  .ccs-typing span { width: 6px; height: 6px; background: #9b7fc8; border-radius: 50%; animation: ccsBounce 1.2s infinite ease-in-out; }
+  .ccs-typing span:nth-child(2) { animation-delay: .2s; }
+  .ccs-typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes ccsBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-7px); } }
+  .ccs-input-area { padding: 12px 16px; border-top: 1px solid var(--border); background: #fff; display: flex; gap: 8px; align-items: flex-end; }
+  .ccs-input-area textarea { flex: 1; border: 1.5px solid var(--border); border-radius: 7px; padding: 9px 12px; font-size: 13px; resize: none; outline: none; font-family: inherit; max-height: 100px; min-height: 40px; line-height: 1.5; }
+  .ccs-input-area textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(75,40,109,.1); }
+  .ccs-send-btn { background: var(--accent); color: #fff; border: none; border-radius: 7px; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+  .ccs-send-btn:hover { background: #3a1e55; }
+  .ccs-send-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .ccs-bar-top { display: flex; align-items: center; justify-content: space-between; padding: 5px 16px 0; }
+  .ccs-hint { font-size: 11px; color: var(--text-sub); }
+  .ccs-btn-sm { padding: 3px 8px; border: 1px solid var(--border); border-radius: 3px; background: #fff; color: var(--text-sub); font-size: 11px; font-weight: 600; cursor: pointer; }
+  .ccs-btn-sm:hover { border-color: var(--accent); color: var(--accent); }
+  .ccs-sqs { padding: 6px 16px 0; display: flex; gap: 6px; flex-wrap: wrap; }
+  .ccs-sq { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 4px 10px; font-size: 11px; color: var(--accent); cursor: pointer; white-space: nowrap; }
+  .ccs-sq:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .ccs-status-bar { padding: 3px 16px; font-size: 11px; color: var(--text-sub); display: flex; align-items: center; gap: 5px; border-top: 1px solid #f0f0f0; background: #f8f9fa; }
+  .ccs-dot { width: 6px; height: 6px; border-radius: 50%; background: #16a34a; flex-shrink: 0; }
+  .ccs-dot.loading { background: #d97706; animation: ccsPulse .8s infinite; }
+  .ccs-dot.error { background: #dc2626; }
+  @keyframes ccsPulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+  .ccs-welcome { background: linear-gradient(135deg,#f9f5ff 0%,#fff 100%); border: 1px solid #d4bde8; border-radius: 10px; padding: 16px 20px; max-width: 520px; align-self: center; margin: 16px auto; text-align: center; }
+  .ccs-welcome h3 { color: var(--accent); font-size: 15px; margin: 0 0 6px; }
+  .ccs-welcome p { font-size: 12px; color: var(--text-sub); line-height: 1.5; margin: 0; }
+  .ccs-banner { background: linear-gradient(135deg,#3a1e55 0%,#4B286D 100%); color: #fff; text-align: center; padding: 7px 16px; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+  .ccs-pill { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 16px; padding: 2px 8px; font-size: 10px; display: inline-flex; align-items: center; gap: 4px; }
+  .ccs-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: #66CC00; display: inline-block; }
+  @media (max-width: 700px) { .ccs-sidebar { display: none; } }
 </style>
 </head>
 <body>
@@ -320,7 +415,7 @@
   <a onclick="switchTab('jaop', this)">JAOP</a>
   <a onclick="switchTab('stakeholders', this)">Stakeholders</a>
   <a onclick="switchTab('gantt', this)">Gantt Chart</a>
-  <a style="margin-left:auto;background:#7c3aed;color:white;" onclick="alert('📖 Ask CCS Anything is available in Cowork!\n\nArtifact ID: ask-ccs-anything\n\nSearches across:\n• Jira (COCS tickets)\n• Gmail (CCS threads)\n• Google Drive (documents)\n• Slack (#prod-rating-and-charging)\n\nOpen the artifact to ask questions about CCS!')">🔍 Ask CCS Anything</a>
+  <a style="margin-left:auto;background:#4B286D;color:white;border-radius:4px;font-weight:600;" onclick="switchTab('askccs', this)">💬 Ask CCS</a>
 </div>
 
 <div class="content">
@@ -3152,6 +3247,85 @@ NEW SOURCES (May 12):
 - Google Drive: CCS Migration Downstream Requirements & Field Mapping (updated May 11); CCS_cohort_migration_plan.md (updated May 8)
 -->
 
+<!-- ── Ask CCS Chatbot Tab ── -->
+<div id="askccs" class="section">
+  <div class="ccs-banner">
+    <span style="font-weight:700;">Ask CCS Anything — Powered by:</span>
+    <span class="ccs-pill"><span class="ccs-pill-dot"></span>42 GDrive Docs</span>
+    <span class="ccs-pill"><span class="ccs-pill-dot"></span>Jira COCS Tickets</span>
+    <span class="ccs-pill"><span class="ccs-pill-dot"></span>Email Threads</span>
+    <span class="ccs-pill"><span class="ccs-pill-dot"></span>Slack Messages</span>
+  </div>
+  <div class="ccs-chat-wrap">
+    <!-- Sidebar: document index -->
+    <div class="ccs-sidebar">
+      <div class="ccs-sidebar-hdr">
+        <h3>Knowledge Sources</h3>
+        <div id="ccs-idx-status">Not connected</div>
+      </div>
+      <div class="ccs-sidebar-scroll" id="ccs-sidebar-docs"></div>
+    </div>
+
+    <!-- Main chat area -->
+    <div class="ccs-chat-main">
+      <!-- Setup panel -->
+      <div class="ccs-setup" id="ccs-setup">
+        <div class="ccs-setup-card">
+          <h2>Ask CCS Anything</h2>
+          <p>AI-powered search across all CCS migration documents, Jira tickets, emails, and Slack messages. Runs locally — no data leaves your machine except to Claude API.</p>
+          <div class="ccs-steps">
+            <h4>Setup (one-time)</h4>
+            <div class="ccs-step"><div class="ccs-step-n">1</div><div>In a terminal: <code>python3 serve_ccs.py</code></div></div>
+            <div class="ccs-step"><div class="ccs-step-n">2</div><div>Enter your Anthropic API key below</div></div>
+            <div class="ccs-step"><div class="ccs-step-n">3</div><div>Click Connect — key is saved locally</div></div>
+          </div>
+          <div class="ccs-fgroup">
+            <label for="ccs-key-input">Anthropic API Key</label>
+            <input type="password" id="ccs-key-input" placeholder="sk-ant-..." autocomplete="off" />
+          </div>
+          <button class="ccs-btn-primary" id="ccs-connect-btn" onclick="ccsConnect()">Connect &amp; Load Knowledge Base</button>
+          <div id="ccs-setup-err" class="ccs-setup-err"></div>
+        </div>
+      </div>
+
+      <!-- Chat panel (hidden until connected) -->
+      <div id="ccs-panel" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+        <div class="ccs-api-bar">
+          <span>API Key:</span>
+          <span class="ccs-api-key-disp" id="ccs-key-disp"></span>
+          <button class="ccs-btn-link" onclick="ccsDisconnect()">Change</button>
+        </div>
+        <div class="ccs-messages" id="ccs-messages">
+          <div class="ccs-welcome">
+            <h3>CCS Knowledge Base Assistant</h3>
+            <p>Ask me anything about the CCS Postpaid Migration — status, defects, decisions, timelines, architecture, or requirements.</p>
+          </div>
+        </div>
+        <div class="ccs-sqs" id="ccs-sqs">
+          <button class="ccs-sq" onclick="ccsSendSuggested(this)">What are the current critical defects?</button>
+          <button class="ccs-sq" onclick="ccsSendSuggested(this)">What is the cohort migration status?</button>
+          <button class="ccs-sq" onclick="ccsSendSuggested(this)">What are the main revenue risks?</button>
+          <button class="ccs-sq" onclick="ccsSendSuggested(this)">What throttling requirements are open?</button>
+          <button class="ccs-sq" onclick="ccsSendSuggested(this)">Who are the key stakeholders?</button>
+        </div>
+        <div class="ccs-bar-top">
+          <span class="ccs-hint">Enter to send · Shift+Enter for new line</span>
+          <button class="ccs-btn-sm" onclick="ccsClearChat()">Clear</button>
+        </div>
+        <div class="ccs-input-area">
+          <textarea id="ccs-input" placeholder="Ask anything about the CCS migration..." rows="1"
+            onkeydown="ccsKeydown(event)" oninput="ccsResize(this)"></textarea>
+          <button class="ccs-send-btn" id="ccs-send-btn" onclick="ccsSend()" title="Send">&#10148;</button>
+        </div>
+        <div class="ccs-status-bar">
+          <div class="ccs-dot" id="ccs-dot"></div>
+          <span id="ccs-status-txt">Ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div style="background:#F2F0F7;border-top:1px solid #DDD;padding:10px 32px;font-size:11px;color:#999;text-align:center;">
   CCS Migration Executive Dashboard &nbsp;|&nbsp; Last refreshed: May 31, 2026 11pm EDT &nbsp;|&nbsp; Auto-refreshed daily
 </div>
@@ -3192,6 +3366,315 @@ function switchTab(id, el) {
   document.querySelectorAll('.status-strip a').forEach(a => a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
+}
+</script>
+
+<script>
+// ── CCS Chatbot ──
+var CCS_API_KEY = '';
+var CCS_DOCS = [];
+var CCS_LOADING = false;
+var CCS_HISTORY = [];
+var CCS_SERVER = 'http://localhost:8765';
+var CCS_CLAUDE_API = 'https://api.anthropic.com/v1/messages';
+var CCS_MAX_CHARS = 80000;
+var CCS_TOP_K = 15;
+var CCS_MAX_PER_DOC = 3;
+var CCS_TYPING_N = 0;
+
+var CCS_SYSTEM = 'You are the CCS Migration Knowledge Base assistant for TELUS. You have access to indexed content from Google Drive documents, Jira tickets, email threads, and Slack messages about the CCS Postpaid Migration project. Answer questions accurately based on the provided context. If information is not in the context, say so clearly rather than guessing. Always cite which source document your answer comes from.\n\nWhen citing sources, mention the document name. Be thorough but concise. Use markdown formatting with headers, bullet points, and tables where helpful.';
+
+window.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('ccs_api_key');
+  if (saved) { CCS_API_KEY = saved; ccsShowPanel(); ccsLoadDocs(); }
+  var inp = document.getElementById('ccs-key-input');
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') ccsConnect(); });
+});
+
+function ccsConnect() {
+  var key = (document.getElementById('ccs-key-input').value || '').trim();
+  var err = document.getElementById('ccs-setup-err');
+  if (!key.startsWith('sk-ant-')) {
+    err.textContent = 'API key should start with "sk-ant-". Please check your key.';
+    err.style.display = 'block'; return;
+  }
+  err.style.display = 'none';
+  var btn = document.getElementById('ccs-connect-btn');
+  btn.disabled = true; btn.textContent = 'Connecting...';
+  CCS_API_KEY = key;
+  localStorage.setItem('ccs_api_key', key);
+  ccsShowPanel(); ccsLoadDocs();
+}
+
+function ccsDisconnect() {
+  CCS_API_KEY = ''; CCS_DOCS = []; CCS_HISTORY = [];
+  localStorage.removeItem('ccs_api_key');
+  document.getElementById('ccs-setup').style.display = 'flex';
+  document.getElementById('ccs-panel').style.display = 'none';
+  document.getElementById('ccs-key-input').value = '';
+  var btn = document.getElementById('ccs-connect-btn');
+  btn.disabled = false; btn.textContent = 'Connect & Load Knowledge Base';
+  document.getElementById('ccs-idx-status').textContent = 'Not connected';
+  document.getElementById('ccs-sidebar-docs').innerHTML = '';
+}
+
+function ccsShowPanel() {
+  document.getElementById('ccs-setup').style.display = 'none';
+  var panel = document.getElementById('ccs-panel');
+  panel.style.display = 'flex';
+  var disp = CCS_API_KEY.substring(0, 12) + '...' + CCS_API_KEY.slice(-4);
+  document.getElementById('ccs-key-disp').textContent = disp;
+}
+
+function ccsLoadDocs() {
+  ccsSetStatus('loading', 'Loading knowledge base...');
+  document.getElementById('ccs-idx-status').textContent = 'Loading...';
+  fetch(CCS_SERVER + '/docs/all', { signal: AbortSignal.timeout(15000) })
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(docs) {
+      CCS_DOCS = docs;
+      ccsRenderSidebar();
+      document.getElementById('ccs-idx-status').textContent = docs.length + ' docs indexed';
+      ccsSetStatus('ready', 'Knowledge base ready — ' + docs.length + ' documents loaded');
+      ccsAddSys('Loaded ' + docs.length + ' documents. Ask me anything about the CCS migration!');
+    })
+    .catch(function(e) {
+      document.getElementById('ccs-idx-status').textContent = 'Server offline';
+      ccsSetStatus('error', 'Run: python3 serve_ccs.py — then reload this tab');
+      ccsAddErr('Cannot reach the local knowledge base server. Start it with: <code>python3 serve_ccs.py</code>');
+    });
+}
+
+function ccsRenderSidebar() {
+  var el = document.getElementById('ccs-sidebar-docs');
+  el.innerHTML = '';
+  var cats = { gdrive: ['📄','Google Drive'], jira: ['🎫','Jira'], email: ['📧','Email'], slack: ['💬','Slack'] };
+  Object.keys(cats).forEach(function(cat) {
+    var docs = CCS_DOCS.filter(function(d) { return d.category === cat; });
+    if (!docs.length) return;
+    var sec = document.createElement('div');
+    var lbl = document.createElement('div');
+    lbl.className = 'ccs-cat-label';
+    lbl.innerHTML = cats[cat][1] + ' <span class="ccs-cat-count">' + docs.length + '</span>';
+    sec.appendChild(lbl);
+    docs.forEach(function(doc) {
+      var item = document.createElement('div');
+      item.className = 'ccs-doc-item';
+      item.dataset.id = doc.id;
+      var name = doc.filename.replace(/\.md$/, '').replace(/^\d+_/, '').replace(/_/g, ' ');
+      item.innerHTML = '<span style="flex-shrink:0">' + cats[cat][0] + '</span><span>' + name + '</span>';
+      sec.appendChild(item);
+    });
+    el.appendChild(sec);
+  });
+}
+
+function ccsChunk(doc) {
+  var lines = doc.content.split('\n'), chunks = [], cur = [], wc = 0;
+  for (var i = 0; i < lines.length; i++) {
+    cur.push(lines[i]); wc += lines[i].split(/\s+/).length;
+    if (wc >= 300) {
+      chunks.push({ id: doc.id, fn: doc.filename, cat: doc.category, text: cur.join('\n') });
+      cur = cur.slice(-3); wc = cur.join('\n').split(/\s+/).length;
+    }
+  }
+  if (cur.length) chunks.push({ id: doc.id, fn: doc.filename, cat: doc.category, text: cur.join('\n') });
+  return chunks;
+}
+
+function ccsScore(chunk, terms) {
+  var t = chunk.text.toLowerCase(), s = 0;
+  terms.forEach(function(q) {
+    if (q.length < 3) return;
+    var idx = 0, ql = q.toLowerCase();
+    while ((idx = t.indexOf(ql, idx)) !== -1) { s++; idx += ql.length; }
+    if (t.includes('# ' + ql) || t.includes('## ' + ql)) s += 5;
+  });
+  return s;
+}
+
+function ccsTerms(q) {
+  var stop = {the:1,a:1,an:1,is:1,are:1,was:1,were:1,what:1,how:1,why:1,when:1,where:1,who:1,do:1,does:1,did:1,have:1,has:1,can:1,could:1,would:1,should:1,will:1,be:1,of:1,in:1,on:1,at:1,to:1,for:1,with:1,by:1,from:1,and:1,or:1,but:1,not:1,this:1,that:1,it:1,i:1,we:1,you:1};
+  var words = (q.toLowerCase().match(/[a-z0-9]+/g) || []);
+  var terms = words.filter(function(w) { return w.length >= 3 && !stop[w]; });
+  for (var i = 0; i < words.length - 1; i++) {
+    if (!stop[words[i]] && !stop[words[i+1]]) terms.push(words[i] + ' ' + words[i+1]);
+  }
+  return terms.filter(function(v,i,a) { return a.indexOf(v) === i; });
+}
+
+function ccsRetrieve(query) {
+  if (!CCS_DOCS.length) return [];
+  var terms = ccsTerms(query);
+  if (!terms.length) return [];
+  var all = [];
+  CCS_DOCS.forEach(function(doc) {
+    ccsChunk(doc).forEach(function(c) {
+      var s = ccsScore(c, terms);
+      if (s > 0) all.push(Object.assign({}, c, { score: s }));
+    });
+  });
+  all.sort(function(a,b) { return b.score - a.score; });
+  var sel = [], chars = 0, seen = {};
+  for (var i = 0; i < all.length; i++) {
+    if (sel.length >= CCS_TOP_K || chars + all[i].text.length > CCS_MAX_CHARS) break;
+    var cnt = seen[all[i].id] || 0;
+    if (cnt >= CCS_MAX_PER_DOC) continue;
+    sel.push(all[i]); chars += all[i].text.length; seen[all[i].id] = cnt + 1;
+  }
+  return sel;
+}
+
+function ccsSend() {
+  var inp = document.getElementById('ccs-input');
+  var q = inp.value.trim();
+  if (!q || CCS_LOADING) return;
+  document.getElementById('ccs-sqs').style.display = 'none';
+  inp.value = ''; ccsResize(inp);
+  ccsAddMsg('user', q, null);
+  if (!CCS_API_KEY) { ccsAddErr('No API key. Please reconnect.'); return; }
+  if (!CCS_DOCS.length) { ccsAddErr('Knowledge base not loaded. Start serve_ccs.py and reload.'); return; }
+  CCS_LOADING = true;
+  document.getElementById('ccs-send-btn').disabled = true;
+  var chunks = ccsRetrieve(q);
+  var sources = [];
+  chunks.forEach(function(c) { if (sources.indexOf(c.fn) === -1) sources.push(c.fn); });
+  ccsSetStatus('loading', 'Searching ' + chunks.length + ' chunks from ' + sources.length + ' sources...');
+  var ctx = chunks.length
+    ? '# RETRIEVED CONTEXT\n\n' + chunks.map(function(c) { return '---\n**Source: ' + c.fn + '** (' + c.cat + ')\n\n' + c.text; }).join('\n\n')
+    : '# NOTE: No highly relevant chunks found.\n';
+  var userMsg = ctx + '\n\n---\n\n# QUESTION\n' + q;
+  CCS_HISTORY.push({ role: 'user', content: userMsg });
+  var history = CCS_HISTORY.slice(-6);
+  var tid = ccsAddTyping();
+  fetch(CCS_CLAUDE_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': CCS_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 2048, system: CCS_SYSTEM, messages: history })
+  })
+  .then(function(r) {
+    ccsRemoveTyping(tid);
+    if (!r.ok) return r.json().catch(function(){return{};}).then(function(e){ throw new Error((e.error&&e.error.message)||('API '+r.status)); });
+    return r.json();
+  })
+  .then(function(data) {
+    var ans = (data.content&&data.content[0]&&data.content[0].text) || 'No response.';
+    CCS_HISTORY.push({ role: 'assistant', content: ans });
+    ccsAddMsg('assistant', ans, sources);
+    ccsSetStatus('ready', sources.length + ' source(s) · ' + ((data.usage&&data.usage.output_tokens)||'?') + ' tokens');
+    ccsHighlight(sources);
+    CCS_LOADING = false; document.getElementById('ccs-send-btn').disabled = false;
+    document.getElementById('ccs-input').focus();
+  })
+  .catch(function(e) {
+    ccsRemoveTyping(tid);
+    var msg = e.message;
+    if (msg.includes('401')||msg.includes('auth')) msg = 'Authentication failed — check your API key.';
+    else if (msg.includes('fetch')||msg.includes('network')) msg = 'Network error — check your connection.';
+    ccsAddErr('Error: ' + msg);
+    ccsSetStatus('error', 'API call failed');
+    CCS_HISTORY.pop(); CCS_LOADING = false; document.getElementById('ccs-send-btn').disabled = false;
+  });
+}
+
+function ccsSendSuggested(btn) { document.getElementById('ccs-input').value = btn.textContent; ccsSend(); }
+
+function ccsClearChat() {
+  CCS_HISTORY = [];
+  var m = document.getElementById('ccs-messages');
+  m.innerHTML = '<div class="ccs-welcome"><h3>Chat cleared</h3><p>Start a new conversation about the CCS migration.</p></div>';
+  document.getElementById('ccs-sqs').style.display = 'flex';
+  document.querySelectorAll('.ccs-doc-item.hit').forEach(function(el){ el.classList.remove('hit'); });
+  ccsSetStatus('ready', 'Ready');
+}
+
+function ccsAddMsg(role, content, sources) {
+  var m = document.getElementById('ccs-messages');
+  var div = document.createElement('div'); div.className = 'ccs-msg ' + role;
+  var av = document.createElement('div'); av.className = 'ccs-avatar'; av.textContent = role === 'user' ? 'You' : 'T';
+  var bub = document.createElement('div'); bub.className = 'ccs-bubble';
+  if (role === 'user') { bub.textContent = content; }
+  else {
+    bub.innerHTML = ccsMarkdown(content);
+    if (sources && sources.length) {
+      var cit = document.createElement('div'); cit.className = 'ccs-citations';
+      cit.innerHTML = '<div class="ccs-cit-label">Sources</div>';
+      sources.forEach(function(s) {
+        var tag = document.createElement('span'); tag.className = 'ccs-cit-tag';
+        tag.textContent = s.replace(/\.md$/, ''); cit.appendChild(tag);
+      });
+      bub.appendChild(cit);
+    }
+  }
+  div.appendChild(av); div.appendChild(bub); m.appendChild(div);
+  m.scrollTop = m.scrollHeight;
+}
+
+function ccsAddSys(t) {
+  var m = document.getElementById('ccs-messages');
+  var d = document.createElement('div'); d.style.cssText = 'text-align:center;font-size:11px;color:#999;padding:3px 0;';
+  d.textContent = t; m.appendChild(d); m.scrollTop = m.scrollHeight;
+}
+
+function ccsAddErr(html) {
+  var m = document.getElementById('ccs-messages');
+  var d = document.createElement('div'); d.style.cssText = 'background:#fdecea;border:1px solid #f5c6cb;border-radius:7px;padding:10px 14px;font-size:12px;color:#c62828;max-width:80%;align-self:flex-start;';
+  d.innerHTML = '⚠ ' + html; m.appendChild(d); m.scrollTop = m.scrollHeight;
+}
+
+function ccsAddTyping() {
+  var id = 'ccst-' + (++CCS_TYPING_N);
+  var m = document.getElementById('ccs-messages');
+  var d = document.createElement('div'); d.className = 'ccs-msg assistant'; d.id = id;
+  d.innerHTML = '<div class="ccs-avatar">T</div><div class="ccs-bubble"><div class="ccs-typing"><span></span><span></span><span></span></div></div>';
+  m.appendChild(d); m.scrollTop = m.scrollHeight; return id;
+}
+function ccsRemoveTyping(id) { var el = document.getElementById(id); if (el) el.remove(); }
+
+function ccsHighlight(fns) {
+  document.querySelectorAll('.ccs-doc-item').forEach(function(el) { el.classList.remove('hit'); });
+  fns.forEach(function(fn) {
+    document.querySelectorAll('.ccs-doc-item').forEach(function(el) {
+      if (el.dataset.id && el.dataset.id.endsWith('/' + fn)) el.classList.add('hit');
+    });
+  });
+}
+
+function ccsSetStatus(state, txt) {
+  var dot = document.getElementById('ccs-dot'), s = document.getElementById('ccs-status-txt');
+  if (!dot || !s) return;
+  dot.className = 'ccs-dot' + (state === 'loading' ? ' loading' : state === 'error' ? ' error' : '');
+  s.textContent = txt;
+}
+
+function ccsKeydown(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ccsSend(); } }
+function ccsResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+
+function ccsMarkdown(text) {
+  var cbs = [], ics = [];
+  text = text.replace(/```[\w]*\n([\s\S]*?)```/g, function(m, c) { cbs.push(c); return '\x00C' + (cbs.length-1) + '\x00'; });
+  text = text.replace(/`([^`]+)`/g, function(m, c) { ics.push(c); return '\x00I' + (ics.length-1) + '\x00'; });
+  text = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  text = text.replace(/^#### (.+)$/gm,'<h4>$1</h4>').replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>');
+  text = text.replace(/\*\*\*([^*]+)\*\*\*/g,'<strong><em>$1</em></strong>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>');
+  text = text.replace(/((?:\|.+\|\n)+)/g, function(m) {
+    var rows = m.trim().split('\n'), html = '<table>', h = true;
+    rows.forEach(function(r) {
+      if (/^\|[-| :]+\|$/.test(r.trim())) { h = false; return; }
+      var cells = r.split('|').slice(1,-1); var tag = h ? 'th' : 'td';
+      html += '<tr>' + cells.map(function(c){ return '<'+tag+'>'+c.trim()+'</'+tag+'>'; }).join('') + '</tr>';
+      h = false;
+    });
+    return html + '</table>';
+  });
+  text = text.replace(/^[-*] (.+)$/gm,'<li>$1</li>');
+  text = text.replace(/(<li>[^]*?<\/li>\n?)+/g, function(m){ return '<ul>' + m + '</ul>'; });
+  text = text.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  text = text.replace(/^---$/gm,'<hr>');
+  text = text.split(/\n\n+/).map(function(p){ p=p.trim(); if(!p)return''; if(/^<[hHtTuUoOlLpP]/.test(p))return p; return '<p>'+p.replace(/\n/g,'<br>')+'</p>'; }).join('\n');
+  text = text.replace(/\x00C(\d+)\x00/g, function(m,i){ return '<pre><code>'+cbs[+i].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code></pre>'; });
+  text = text.replace(/\x00I(\d+)\x00/g, function(m,i){ return '<code>'+ics[+i].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code>'; });
+  return text;
 }
 </script>
 </body>
